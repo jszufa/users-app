@@ -5,13 +5,12 @@ class UsersList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
 
 
     render() {
-
+        console.log('zrenderowano UsersList')
         let usersArray = this.props.usersList;
         let usersArrayElements = usersArray.map((user) => {
 

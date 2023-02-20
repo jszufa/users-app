@@ -8,7 +8,7 @@ class Users extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [{ id: 123, name: 'Jola' }, { id: 223, name: 'Ola' }]
+            users: [/* { id: 123, name: 'Jola' }, { id: 223, name: 'Ola' } */]
         };
     }
 
@@ -23,33 +23,35 @@ class Users extends Component {
 
 
     updateUsers = (text) => {
-        
-        /* this.setState(
+
+        console.log('Uruchomiono updateUsers')
+        this.setState(
             (prevState) => {
                 let index = Math.floor(100 + Math.random() * 900);
-                let currentUsersList = prevState.users.push({id: index, name: text});
-                console.log (currentUsersList);
+                prevState.users.push({ id: index, name: text });
+                let currentUsersList = prevState.users;
+                console.log(currentUsersList);
                 return ({ users: currentUsersList });
             }
-        ) */
+        )
     }
 
 
     render() {
 
         let inputName;
-        
+
         /* console.log(inputName.value) */
 
         return (
             <div className='users'>
                 <h1>Users' List</h1>
-                <form>
-                    <input ref={(data) => {inputName = data }} type="text" placeholder='Enter name' />
 
-                    {/* po kliknięciu ma pojawić się nowy element w liście */}
-                    <button onClick={() => {this.updateUsers(inputName.value) }}>Add user</button>
-                </form>
+                <input ref={(data) => { inputName = data }} type="text" placeholder='Enter name' />
+
+                {/* po kliknięciu ma pojawić się nowy element w liście */}
+                <button onClick={() => { this.updateUsers(inputName.value) }}>Add user</button>
+
                 <UsersList usersList={this.state.users} />
             </div>
 
