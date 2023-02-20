@@ -25,21 +25,21 @@ class Users extends Component {
     updateUsers = (text) => {
 
         console.log('Uruchomiono updateUsers')
+        let index = Math.floor(100 + Math.random() * 900);
+
         this.setState(
             (prevState) => {
-                let index = Math.floor(100 + Math.random() * 900);
-                prevState.users.push({ id: index, name: text });
-                let currentUsersList = prevState.users;
-                console.log(currentUsersList);
-                return ({ users: currentUsersList });
+                console.log('Uruchomiono setState')
+                return ({ users: prevState.users.concat({ id: index, name: text }) });
             }
         )
+        this._inputName.value = '';
     }
 
 
     render() {
 
-        let inputName;
+
 
         /* console.log(inputName.value) */
 
@@ -47,10 +47,10 @@ class Users extends Component {
             <div className='users'>
                 <h1>Users' List</h1>
 
-                <input ref={(data) => { inputName = data }} type="text" placeholder='Enter name' />
+                <input ref={(data) => { this._inputName = data }} type="text" placeholder='Enter name' />
 
                 {/* po kliknięciu ma pojawić się nowy element w liście */}
-                <button onClick={() => { this.updateUsers(inputName.value) }}>Add user</button>
+                <button onClick={() => { this.updateUsers(this._inputName.value) }}>Add user</button>
 
                 <UsersList usersList={this.state.users} />
             </div>
