@@ -8,7 +8,7 @@ class Users extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [/* { id: 123, name: 'Jola' }, { id: 223, name: 'Ola' } */]
+            users: []
         };
     }
 
@@ -24,24 +24,35 @@ class Users extends Component {
 
     updateUsers = (text) => {
 
-        console.log('Uruchomiono updateUsers')
-        let index = Math.floor(100 + Math.random() * 900);
+        /* console.log('Uruchomiono updateUsers') */
+        let index = Date.now();
 
         this.setState(
-            (prevState) => {
-                console.log('Uruchomiono setState')
+            prevState => {
+                /* console.log('Uruchomiono setState') */
                 return ({ users: prevState.users.concat({ id: index, name: text }) });
             }
         )
         this._inputName.value = '';
     }
 
+    removeUser = (userID) => {
+        /* console.log('removeUser function'); */
+        console.log(userID);
+
+        this.setState(
+            (prevState) => {
+                return ({ users: prevState.users.filter(user => user.id !== userID) })
+            }
+
+        )
+
+        /* usuń użytkownika w którego kliknięto */
+
+
+    }
 
     render() {
-
-
-
-        /* console.log(inputName.value) */
 
         return (
             <div className='users'>
@@ -52,7 +63,7 @@ class Users extends Component {
                 {/* po kliknięciu ma pojawić się nowy element w liście */}
                 <button onClick={() => { this.updateUsers(this._inputName.value) }}>Add user</button>
 
-                <UsersList usersList={this.state.users} />
+                <UsersList usersList={this.state.users} removeUMethod={this.removeUser} />
             </div>
 
         )

@@ -10,11 +10,11 @@ class UsersList extends Component {
 
 
     render() {
-        console.log('zrenderowano UsersList')
+       /*  console.log('zrenderowano UsersList') */
         let usersArray = this.props.usersList;
         let usersArrayElements = usersArray.map((user) => {
 
-            return <li key={user.id}>{user.name}</li>
+            return <li key={user.id} onClick={() => this.props.removeUMethod(user.id)}>{user.name}</li>
         });
 
         return (
