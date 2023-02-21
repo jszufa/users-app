@@ -1,28 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './UsersList.css';
 
-class UsersList extends Component {
+function UsersList(props) {
 
-    constructor(props) {
-        super(props);
-    }
+    let usersArray = props.usersList;
+    let usersArrayElements = usersArray.map((user) => {
+        return <li key={user.id} onClick={() => props.removeUMethod(user.id)}>{user.name}</li>
+    });
 
+    return (
+        <ul id="list">
+            {usersArrayElements}
+        </ul>
+    );
 
-
-    render() {
-       /*  console.log('zrenderowano UsersList') */
-        let usersArray = this.props.usersList;
-        let usersArrayElements = usersArray.map((user) => {
-
-            return <li key={user.id} onClick={() => this.props.removeUMethod(user.id)}>{user.name}</li>
-        });
-
-        return (
-            <ul id="list">
-                {usersArrayElements}
-            </ul>
-        );
-    }
 }
 
 

@@ -47,9 +47,6 @@ class Users extends Component {
 
         )
 
-        /* usuń użytkownika w którego kliknięto */
-
-
     }
 
     render() {
@@ -60,7 +57,6 @@ class Users extends Component {
 
                 <input ref={(data) => { this._inputName = data }} type="text" placeholder='Enter name' />
 
-                {/* po kliknięciu ma pojawić się nowy element w liście */}
                 <button onClick={() => { this.updateUsers(this._inputName.value) }}>Add user</button>
 
                 <UsersList usersList={this.state.users} removeUMethod={this.removeUser} />
